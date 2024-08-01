@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="RMMI">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reactive Mobile manipulation using an Implicit Neural Map</title>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TT67HSZ2L5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TT67HSZ2L5');
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <!-- <script src="./static/js/index.js"></script> -->
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+    </div>
+  </nav>
+
+  <style>
+    model-viewer {
+      width: 400px;
+      height: 500px;
+    }
+  </style>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">RMMI: Reactive Mobile Manipulation using an Implicit Neural Map
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                Nicolas Marticorena, </span>
+              <span class="author-block">
+                <a href="https://tobiasfischer.info/">Tobias Fischer</a>,</span>
+              <span class="author-block">
+                <a href="https://jhavl.com/">Jesse Haviland</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://nikosuenderhauf.github.io/">Niko Sünderhauf</a>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://research.qut.edu.au/qcr/"> QUT Centre for Robotics </a>
+              </span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://youtu.be/xSroMHX243k" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/nmarticorena/RMMI"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We present RMMI, a whole-body task-space reactive mobile manipulator controller capable of reaching
+              desired end effector poses while avoiding static obstacles. Our work focuses on collision avoidance within
+              a holistic reactive controller; allowing control of the robot inside confined spaces such as a bookshelf.
+              Our controller is formulated as a Quadratic Program (QP) that solves for joint velocities required to
+              achieve a target spatial velocity. We propose using a neural signed distance field (SDF) to obtain the
+              robot's distances from the scene. To represent the robot, we sample points on its mesh, allowing a more
+              precise representation of the robot's outer geometry in contrast to using geometric primitives. We
+              formulate the collision avoidance inside this controller as inequality constraints for the points
+              representing the robot. In addition of a collision cost, formulated as an average of the distance across
+              the points representing the robot. We evaluate our approach in a simulated reaching task, outperforming
+              previous methods, that relies on representing both the robot and the scene as a set of primitive
+              geometries. Furthermore, we tested our approach on a real-world platform, in which the robot reached
+              inside a bookshelf and a cluttered table. Our approach is capable of reaching a target pose in clutter or
+              confined spaces within a holistic reactive controller. </p>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+
+      <!-- Paper video. -->
+      <br>
+      <br>
+      <br>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe width="20" src="https://www.youtube.com/embed/xSroMHX243k?si=N5qUZuPZnuYXTRIa" frameborder="0"
+              allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Robot precision -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="title is-3">
+          <center> Robot representation</center>
+        </div>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <span id="pb" class="button is-info is-rounded">
+              Primitives
+            </span>
+            <span id="points_1" class="button is-normal is-rounded">
+              9476 Points
+            </span>
+            <span id="new_points_2" class="button is-normal is-rounded">
+              2358 Points
+            </span>
+            <span id="curobo" class="button is-normal is-rounded">
+              Spheres
+            </span>
+          </div>
+        </div>
+        <div class="columns is-vcentered">
+          <div class="column is-centered">
+            <div class="title is-4">
+              <center> Robot Mesh </center>
+            </div>
+            <span>
+              <model-viewer id="gt_robot" alt="chair" src="static/models/gt.glb" shadow-intensity="1" ar
+                environment-image="static/models/thatch_chapel_2k.hdr" camera-controls touch-action="pan-y">
+              </model-viewer>
+            </span>
+          </div>
+          <div class="colum is-centerd">
+            <div class="title is-4">
+              <center> Collision representation </center>
+            </div>
+
+            <span>
+              <model-viewer id="robot" alt="chair" src="static/models/pb.glb" shadow-intensity="1" ar
+                environment-image="static/models/thatch_chapel_2k.hdr" touch-action="pan-y" interaction-prompt="none">
+              </model-viewer>
+            </span>
+          </div>
+        </div>
+  </section>
+
+  <!-- Real World examples -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class='title is-3'>
+          <center> Real-World Experiments </center>
+        </div>
+        <div class='title is-4 has-text-centered'>Scene</div>
+        <div class="columns">
+          <div class="column has-text-centered">
+            <span id="bookshelf" class="button is-info is-rounded">
+              Bookshelf
+            </span>
+            <span id="table" class="button is-normal is-rounded">
+              Table
+            </span>
+            <span id="cabinet" class="button is-normal is-rounded">
+              Cabinet
+            </span>
+          </div>
+        </div>
+
+        <div class='title is-4 has-text-centered'>Approach</div>
+
+        <div class="has-text-centered">
+          <div class="columns">
+            <div class="column has-text-centered ">
+              <span id="blind" class="button is-info is-rounded">
+                blind
+              </span>
+              <span id="ine" class="button is-normal is-rounded">
+                inequality
+              </span>
+              <span id="both" class="button is-normal is-rounded">
+                Both
+              </span>
+            </div>
+          </div>
+          <div class="columns is-vcentered">
+            <div class="column is-centered">
+              <span>
+                <model-viewer id="m1" alt="chair" src="static/models/bookshelf.glb" shadow-intensity="1" ar
+                  environment-image="static/models/thatch_chapel_2k.hdr" camera-controls touch-action="pan-y">
+                </model-viewer>
+              </span>
+            </div>
+            <div class="column is-centered">
+              <span class="link-block">
+                <video id="v1" style="max-height: 300px;" autoplay muted loop controls playsinline height="100%">
+                  <source src="static/videos/Bookshelf-No_Col_1.mp4" type="video/mp4">
+                </video>
+              </span>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Extra scripts for loading the videos-->
+  <script>
+    var bookshelf = {
+      "blind": {
+        "video": "static/videos/Bookshelf-No_Col_1.mp4",
+        "model": "static/models/bookshelf.glb"
+      },
+      "inequality": {
+        "video": "static/videos/Bookshelf-NoActive_1.mp4",
+        "model": "static/models/bookshelf.glb"
+      },
+      "both": {
+        "video": "static/videos/Bookshelf-Active_1.mp4",
+        "model": "static/models/bookshelf.glb"
+      }
+    }
+    var table = {
+      "blind": {
+        "video": "static/videos/Table-No_Col_4.mp4",
+        "model": "static/models/table.glb"
+      },
+      "inequality": {
+        "video": "static/videos/Table_No_active_8.mp4",
+        "model": "static/models/table.glb"
+      },
+      "both": {
+        "video": "static/videos/Table_active_8.mp4",
+        "model": "static/models/table.glb"
+      }
+    }
+    var cabinet = {
+      "blind": {
+        "video": "static/videos/Cabinet-Blind_0.mp4",
+        "model": "static/models/cabinet.glb"
+      },
+      "inequality": {
+        "video": "static/videos/Cabinet-No_Active_0.mp4",
+        "model": "static/models/cabinet.glb"
+      },
+      "both": {
+        "video": "static/videos/Cabinet-Active_0.mp4",
+        "model": "static/models/cabinet.glb"
+      }
+    }
+
+    var models = {
+      "Primitives": "pb.glb",
+      "9476 Points": "points_1.glb",
+      "4000 Points": "new_points_2.glb",
+      "Spheres": "curobo.glb"
+    }
+
+    v1 = document.getElementById("v1")
+    m1 = document.getElementById("m1")
+
+    r = document.getElementById("robot")
+
+    method = "blind"
+    robot = "pb"
+
+    function update_buttons() {
+
+      document.getElementById('bookshelf').className = 'button is-normal is-rounded';
+      document.getElementById('table').className = 'button is-normal is-rounded';
+      document.getElementById('cabinet').className = 'button is-normal is-rounded';
+
+      v1.setAttribute('src', data[method]['video']);
+      m1.setAttribute('src', data[method]['model']);
+
+    }
+
+    btn_bookshelf = document.getElementById('bookshelf')
+    btn_bookshelf.addEventListener('click', function onClick() {
+      data = bookshelf;
+      update_buttons();
+      btn_bookshelf.className = 'button is-info is-rounded';
+    });
+
+    btn_table = document.getElementById('table')
+    btn_table.addEventListener('click', function onClick() {
+      data = table;
+      update_buttons();
+      btn_table.className = 'button is-info is-rounded';
+    });
+
+    btn_cabinet = document.getElementById('cabinet')
+    btn_cabinet.addEventListener('click', function onClick() {
+      data = cabinet;
+      update_buttons();
+      btn_cabinet.className = 'button is-info is-rounded';
+    });
+
+
+    // Update methods
+    function update_method() {
+      document.getElementById('blind').className = 'button is-normal is-rounded';
+      document.getElementById('ine').className = 'button is-normal is-rounded';
+      document.getElementById('both').className = 'button is-normal is-rounded';
+
+
+      v1.setAttribute('src', data[method]['video']);
+    }
+
+
+    btn_blind = document.getElementById('blind')
+    btn_blind.addEventListener('click', function onClick() {
+      method = "blind";
+      update_method();
+      btn_blind.className = 'button is-info is-rounded';
+    });
+
+    btn_ine = document.getElementById('ine')
+    btn_ine.addEventListener('click', function onClick() {
+      method = "inequality";
+      update_method();
+      btn_ine.className = 'button is-info is-rounded';
+    });
+
+    btn_both = document.getElementById('both')
+    btn_both.addEventListener('click', function onClick() {
+      method = "both";
+      update_method();
+      btn_both.className = 'button is-info is-rounded';
+    });
+
+    function update_robots() {
+      document.getElementById('pb').className = 'button is-normal is-rounded';
+      document.getElementById('points_1').className = 'button is-normal is-rounded';
+      document.getElementById('new_points_2').className = 'button is-normal is-rounded';
+      document.getElementById('curobo').className = 'button is-normal is-rounded';
+
+      r.setAttribute('src', 'static/models/' + robot + ".glb")
+    }
+
+    pb_robot = document.getElementById('pb')
+    pb_robot.addEventListener('click', function onClick() {
+      robot = "pb";
+      update_robots();
+      pb_robot.className = 'button is-info is-rounded';
+    });
+
+    points_1_robot = document.getElementById('points_1')
+    points_1_robot.addEventListener('click', function onClick() {
+      robot = "points_1";
+      update_robots();
+      points_1_robot.className = 'button is-info is-rounded';
+    });
+
+    new_points_2_robot = document.getElementById('new_points_2')
+    new_points_2_robot.addEventListener('click', function onClick() {
+      robot = "new_points_2";
+      update_robots();
+      new_points_2_robot.className = 'button is-info is-rounded';
+    });
+
+    curobo_robot = document.getElementById('curobo')
+    curobo_robot.addEventListener('click', function onClick() {
+      robot = "curobo";
+      update_robots();
+      curobo_robot.className = 'button is-info is-rounded';
+    });
+
+    const gtRobot = document.getElementById('gt_robot');
+    const robot_model = document.getElementById('robot');
+
+    let isSyncing = false;
+
+    const syncCameras = (source, target) => {
+      if (isSyncing) return;
+      isSyncing = true;
+
+
+      const {theta, phi, radius} = source.getCameraOrbit();
+      const fieldOfView = source.getFieldOfView();
+
+      target.cameraOrbit = `${theta}rad ${phi}rad ${radius}m`;
+      target.fieldOfView = `${fieldOfView}deg`;
+
+      setTimeout(() => {isSyncing = false;}, 50);
+    };
+    const event_name = "camera-change"
+    gtRobot.addEventListener(event_name, () => syncCameras(gtRobot, robot_model));
+    robot_model.addEventListener(event_name, () => syncCameras(robot_model, gtRobot));
+
+  // DATA LOADING
+  </script>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Website taken from <a href="https://github.com/bundlesdf/bundlesdf.github.io">BundleSDF</a> and
+              <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
