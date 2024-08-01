@@ -205,12 +205,13 @@
         <div class="columns is-vcentered">
           <div class="column is-centered">
             <div class="title is-4">
-              <center> Robot Mesh </center>
+              <center> Robot Mesh</center>
             </div>
             <span>
               <model-viewer id="gt_robot" alt="chair" src="static/models/gt.glb" shadow-intensity="1" ar
-                environment-image="static/models/thatch_chapel_2k.hdr" camera-controls touch-action="pan-y">
+                environment-image="static/models/thatch_chapel_2k.hdr" touch-action="pan-y">
               </model-viewer>
+              <br>
             </span>
           </div>
           <div class="colum is-centerd">
@@ -220,8 +221,13 @@
 
             <span>
               <model-viewer id="robot" alt="chair" src="static/models/pb.glb" shadow-intensity="1" ar
-                environment-image="static/models/thatch_chapel_2k.hdr" touch-action="pan-y" interaction-prompt="none">
+                environment-image="static/models/thatch_chapel_2k.hdr" camera-controls touch-action="pan-y"
+                interaction-prompt="none">
               </model-viewer>
+              <div class="title is-4">
+                <center> Interactive </center>
+              </div>
+
             </span>
           </div>
         </div>
@@ -231,59 +237,64 @@
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
-        <div class='title is-3'>
+        <div class='title is-3 has-text-centered'>
           <center> Real-World Experiments </center>
-        </div>
-        <div class='title is-4 has-text-centered'>Scene</div>
-        <div class="columns">
-          <div class="column has-text-centered">
-            <span id="bookshelf" class="button is-info is-rounded">
-              Bookshelf
-            </span>
-            <span id="table" class="button is-normal is-rounded">
-              Table
-            </span>
-            <span id="cabinet" class="button is-normal is-rounded">
-              Cabinet
-            </span>
-          </div>
-        </div>
-
-        <div class='title is-4 has-text-centered'>Approach</div>
-
-        <div class="has-text-centered">
           <div class="columns">
-            <div class="column has-text-centered ">
-              <span id="blind" class="button is-info is-rounded">
-                blind
-              </span>
-              <span id="ine" class="button is-normal is-rounded">
-                inequality
-              </span>
-              <span id="both" class="button is-normal is-rounded">
-                Both
-              </span>
-            </div>
-          </div>
-          <div class="columns is-vcentered">
-            <div class="column is-centered">
+            <div class="column is-half">
+              <div class='title is-4 has-text-centered'>Scenes</div>
+              <div class="columns">
+                <div class="column has-text-centered">
+                  <span id="bookshelf" class="button is-info is-rounded">
+                    Bookshelf
+                  </span>
+                  <span id="table" class="button is-normal is-rounded">
+                    Table
+                  </span>
+                  <span id="cabinet" class="button is-normal is-rounded">
+                    Cabinet
+                  </span>
+                </div>
+              </div>
               <span>
                 <model-viewer id="m1" alt="chair" src="static/models/bookshelf.glb" shadow-intensity="1" ar
                   environment-image="static/models/thatch_chapel_2k.hdr" camera-controls touch-action="pan-y">
                 </model-viewer>
               </span>
             </div>
-            <div class="column is-centered">
-              <span class="link-block">
-                <video id="v1" style="max-height: 300px;" autoplay muted loop controls playsinline height="100%">
-                  <source src="static/videos/Bookshelf-No_Col_1.mp4" type="video/mp4">
-                </video>
-              </span>
+            <div class="column is-half">
+              <div class='title is-4 has-text-centered'>Approach</div>
+
+              <div class="has-text-centered">
+                <div class="columns">
+                  <div class="column has-text-centered ">
+                    <span id="blind" class="button is-info is-rounded">
+                      No Collision Avoidance
+                    </span>
+                    <span id="ine" class="button is-normal is-rounded">
+                      Only Inequality
+                    </span>
+                    <span id="both" class="button is-normal is-rounded">
+                      Ours
+                    </span>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="columns is-vcentered">
+                  <span class="link-block">
+                    <video id="v1" style="max-height: 500px;" autoplay muted loop controls playsinline height="100%">
+                      <source src="static/videos/Bookshelf-No_Col_1.mp4" type="video/mp4">
+                    </video>
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <br>
       </div>
+      <br>
+    </div>
     </div>
   </section>
 
@@ -347,6 +358,7 @@
 
     method = "blind"
     robot = "pb"
+    data = bookshelf;
 
     function update_buttons() {
 
@@ -469,7 +481,7 @@
       setTimeout(() => {isSyncing = false;}, 50);
     };
     const event_name = "camera-change"
-    gtRobot.addEventListener(event_name, () => syncCameras(gtRobot, robot_model));
+    <!-- gtRobot.addEventListener(event_name, () => syncCameras(gtRobot, robot_model)); -->
     robot_model.addEventListener(event_name, () => syncCameras(robot_model, gtRobot));
 
   // DATA LOADING
