@@ -1,4 +1,4 @@
-# Nerfies
+# RMMI
 
 This is the repository that contains source code for the [RMMI website](https://rmmi.github.io).
 
