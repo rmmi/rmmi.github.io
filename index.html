@@ -253,11 +253,11 @@
               <div class='title is-4 has-text-centered'>Scenes</div>
               <div class="columns">
                 <div class="column has-text-centered">
-                  <span id="bookshelf" class="button is-info is-rounded">
-                    Bookshelf
-                  </span>
-                  <span id="table" class="button is-normal is-rounded">
+                  <span id="table" class="button is-info is-rounded">
                     Table
+                  </span>
+                  <span id="bookshelf" class="button is-normal is-rounded">
+                    Bookshelf
                   </span>
                   <span id="cabinet" class="button is-normal is-rounded">
                     Cabinet
@@ -265,7 +265,7 @@
                 </div>
               </div>
               <span>
-                <model-viewer id="m1" alt="chair" src="static/models/bookshelf.glb" shadow-intensity="1" ar
+                <model-viewer id="m1" alt="chair" src="static/models/table.glb" shadow-intensity="1" ar
                   environment-image="static/models/thatch_chapel_2k.hdr" camera-controls touch-action="pan-y">
                 </model-viewer>
               </span>
@@ -276,13 +276,13 @@
               <div class="has-text-centered">
                 <div class="columns">
                   <div class="column has-text-centered ">
-                    <span id="blind" class="button is-info is-rounded">
+                    <span id="blind" class="button is-normal is-rounded">
                       No Collision Avoidance
                     </span>
                     <span id="ine" class="button is-normal is-rounded">
                       Only Inequality
                     </span>
-                    <span id="both" class="button is-normal is-rounded">
+                    <span id="both" class="button is-info is-rounded">
                       Ours
                     </span>
                   </div>
@@ -293,7 +293,7 @@
                 <div class="columns is-vcentered">
                   <span class="link-block">
                     <video id="v1" style="max-height: 500px;" autoplay muted loop controls playsinline height="100%">
-                      <source src="static/videos/Bookshelf-No_Col_1.mp4" type="video/mp4">
+                      <source src="static/videos/Table_active_8.mp4" type="video/mp4">
                     </video>
                   </span>
                 </div>
@@ -365,9 +365,9 @@
 
     r = document.getElementById("robot")
 
-    method = "blind"
+    method = "both"
     robot = "pb"
-    data = bookshelf;
+    data = table;
 
     function update_buttons() {
 
