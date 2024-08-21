@@ -6,7 +6,7 @@
   <meta name="description" content="RMMI">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reactive Mobile manipulation using an Implicit Neural Map</title>
+  <title>Enhanced Obstacle Avoidance for Reactive Mobile manipulation using an Implicit Neural Map</title>
 
 
   <!-- Google tag (gtag.js) -->
@@ -73,7 +73,8 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">RMMI: Reactive Mobile Manipulation using an Implicit Neural Map
+            <h1 class="title is-1 publication-title">RMMI: Enhanced Obstacle Avoidance for Reactive Mobile Manipulation
+              using an Implicit Neural Map
             </h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
@@ -116,7 +117,7 @@
                 </span>
                 <!-- Video Link. -->
                 <span class="link-block">
-                  <a href="https://youtu.be/xSroMHX243k" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://youtu.be/04YaMjKAmcM" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-youtube"></i>
                     </span>
@@ -150,20 +151,23 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We present RMMI, a whole-body task-space reactive mobile manipulator controller capable of reaching
-              desired end effector poses while avoiding static obstacles. Our work focuses on collision avoidance within
-              a holistic reactive controller; allowing control of the robot inside confined spaces such as a bookshelf.
-              Our controller is formulated as a Quadratic Program (QP) that solves for joint velocities required to
-              achieve a target spatial velocity. We propose using a neural signed distance field (SDF) to obtain the
-              robot's distances from the scene. To represent the robot, we sample points on its mesh, allowing a more
-              precise representation of the robot's outer geometry in contrast to using geometric primitives. We
-              formulate the collision avoidance inside this controller as inequality constraints for the points
-              representing the robot. In addition of a collision cost, formulated as an average of the distance across
-              the points representing the robot. We evaluate our approach in a simulated reaching task, outperforming
-              previous methods, that relies on representing both the robot and the scene as a set of primitive
-              geometries. Furthermore, we tested our approach on a real-world platform, in which the robot reached
-              inside a bookshelf and a cluttered table. Our approach is capable of reaching a target pose in clutter or
-              confined spaces within a holistic reactive controller. </p>
+              We introduce RMMI, a novel reactive control
+              framework for mobile manipulators operating in complex, static
+              environments. Our approach leverages a neural Signed Distance
+              Field (SDF) to model intricate environmental details and integrates
+              this representation as inequality constraints within a Quadratic
+              Programme (QP) to coordinate the robot’s joint and base
+              movements. A key contribution is the introduction of an active
+              collision avoidance cost term that maximises the total robot
+              distance during motion. Specifically, we evaluate our approach
+              in a simulated reaching task, outperforming previous methods
+              that rely on representing both the robot and the scene as a set of
+              primitive geometries. Compared with the baseline, we improved
+              by 15% in the task success rate and the active collision cost
+              improved a further 10%. We also demonstrate our approach
+              on a real-world platform, showing its effectiveness in reaching
+              target poses in cluttered or confined spaces using environment
+              models built directly from sensor data.
             </p>
           </div>
         </div>
@@ -179,7 +183,7 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Video</h2>
           <div class="publication-video">
-            <iframe width="20" src="https://www.youtube.com/embed/xSroMHX243k?si=N5qUZuPZnuYXTRIa" frameborder="0"
+            <iframe width="20" src="https://www.youtube.com/embed/04YaMjKAmcM?si=EXSDoN5gTkFhNwCm" frameborder="0"
               allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
