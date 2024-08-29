@@ -152,22 +152,22 @@
           <div class="content has-text-justified">
             <p>
               We introduce RMMI, a novel reactive control
-              framework for mobile manipulators operating in complex, static
-              environments. Our approach leverages a neural Signed Distance
-              Field (SDF) to model intricate environmental details and integrates
-              this representation as inequality constraints within a Quadratic
-              Programme (QP) to coordinate the robot’s joint and base
-              movements. A key contribution is the introduction of an active
-              collision avoidance cost term that maximises the total robot
-              distance during motion. Specifically, we evaluate our approach
-              in a simulated reaching task, outperforming previous methods
-              that rely on representing both the robot and the scene as a set of
+              framework for mobile manipulators operating in complex,
+              static environments. Our approach leverages a neural Signed
+              Distance Field (SDF) to model intricate environment details and
+              incorporates this representation as inequality constraints within
+              a Quadratic Program (QP) to coordinate robot joint and base
+              motion. A key contribution is the introduction of an active collision
+              avoidance cost term that maximises the total robot distance to
+              obstacles during the motion. We first evaluate our approach in a
+              simulated reaching task, outperforming previous methods that
+              rely on representing both the robot and the scene as a set of
               primitive geometries. Compared with the baseline, we improved
-              by 15% in the task success rate and the active collision cost
-              improved a further 10%. We also demonstrate our approach
-              on a real-world platform, showing its effectiveness in reaching
-              target poses in cluttered or confined spaces using environment
-              models built directly from sensor data.
+              the task success rate by 25% in total, which includes increases
+              of 10% by using the active collision cost. We also demonstrate
+              our approach on a real-world platform, showing its effectiveness
+              in reaching target poses in cluttered and confined spaces using
+              environment models built directly from sensor data
             </p>
           </div>
         </div>
