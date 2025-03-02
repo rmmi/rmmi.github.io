@@ -6,7 +6,7 @@
   <meta name="description" content="RMMI">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Enhanced Obstacle Avoidance for Reactive Mobile manipulation using an Implicit Neural Map</title>
+  <title>Reactive Mobile manipulation using an Implicit Neural Map</title>
 
 
   <!-- Google tag (gtag.js) -->
@@ -73,7 +73,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">RMMI: Enhanced Obstacle Avoidance for Reactive Mobile Manipulation
+            <h1 class="title is-1 publication-title">RMMI: Reactive Mobile Manipulation
               using an Implicit Neural Map
             </h1>
             <div class="is-size-5 publication-authors">
@@ -141,23 +141,27 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce RMMI, a novel reactive control
-              framework for mobile manipulators operating in complex,
-              static environments. Our approach leverages a neural Signed
-              Distance Field (SDF) to model intricate environment details and
-              incorporates this representation as inequality constraints within
-              a Quadratic Program (QP) to coordinate robot joint and base
-              motion. A key contribution is the introduction of an active collision
-              avoidance cost term that maximises the total robot distance to
-              obstacles during the motion. We first evaluate our approach in a
-              simulated reaching task, outperforming previous methods that
-              rely on representing both the robot and the scene as a set of
-              primitive geometries. Compared with the baseline, we improved
-              the task success rate by 25% in total, which includes increases
-              of 10% by using the active collision cost. We also demonstrate
-              our approach on a real-world platform, showing its effectiveness
-              in reaching target poses in cluttered and confined spaces using
-              environment models built directly from sensor data
+              Mobile manipulator robots operating in complex domestic and
+              industrial environments must effectively coordinate their
+              base and arm motions while avoiding obstacles. While
+              current reactive control methods gracefully achieve this
+              coordination, they rely on simplified and idealised
+              geometric representations of the environment to avoid
+              collisions. This limits their performance in cluttered
+              environments. To address this problem, we introduce RMMI, a
+              reactive control framework that leverages the ability of
+              neural signed distance fields (SDFs) to provide a
+              continuous and differentiable representation of the
+              environment's geometry. RMMI formulates a quadratic program
+              that optimises jointly for robot base and arm motion,
+              maximises manipulability, and avoids collisions through a
+              set of inequality constraints. These constraints are
+              constructed by querying the SDF for the distance and
+              direction to the closest obstacle for a large number of
+              sampling points on the robot. We evaluate RMMI both in
+              simulation and a set of real-world experiments. For
+              reaching in cluttered environments, we observe a 25\%
+              increase in success rate. 
             </p>
           </div>
         </div>
